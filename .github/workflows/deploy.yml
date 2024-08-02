@@ -22,7 +22,7 @@ jobs:
           echo "GITHUB_REF:$GITHUB_REF"
           echo "GITHUB_HEAD_REF:$GITHUB_HEAD_REF"
   deploy:
-    if: github.event.pull_request.merged == true && (github.event_name == 'workflow_dispatch' || startsWith( vars.GITHUB_HEAD_REF, 'chore/release' ))
+    if: ${{github.event.pull_request.merged == true && (github.event_name == 'workflow_dispatch' || startsWith( $GITHUB_HEAD_REF, 'chore/release' ))}}
     environment: production
     runs-on: ubuntu-latest
     steps:
